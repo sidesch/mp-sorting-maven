@@ -120,4 +120,64 @@ public class TestSorter {
     ArrayUtils.permute(original);
     assertSorts(expected, original, intSorter);
   } // permutedIntegers
+
+  @Test
+  public void changeEndElement() {
+    if (null == stringSorter) {
+      return;
+    } // if
+    String[] original = {"alpha", "delta", "gamma", "beta"};
+    String[] expected = {"alpha", "beta", "delta", "gamma"};
+    assertSorts(expected, original, stringSorter);
+  } // changeEndElement
+
+  @Test
+  public void changeStartElement() {
+    if (null == stringSorter) {
+      return;
+    } // if
+    String[] original = {"gamma", "alpha", "beta", "delta"};
+    String[] expected = {"alpha", "beta", "delta", "gamma"};
+    assertSorts(expected, original, stringSorter);
+  } // changeStartElement
+
+  @Test
+  public void switchFrontBackIntegers() {
+    if (null == intSorter) {
+      return;
+    } // if
+    Integer[] original = {10, 2, 3, 4, 5, 6, 7, 8, 9, 1};
+    Integer[] expected = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    assertSorts(expected, original, intSorter);
+  } // switchFrontBackIntegers
+
+  @Test
+  public void switchAdjacentElements() {
+    if (null == intSorter) {
+      return;
+    } // if
+    Integer[] original = {2, 1, 4, 3, 6, 5, 8, 7, 10, 9};
+    Integer[] expected = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    assertSorts(expected, original, intSorter);
+  } // switchAdjacentElements
+
+  @Test
+  public void switchAdjacentStrings() {
+    if (null == stringSorter) {
+      return;
+    } // if
+    String[] original = {"beta", "alpha", "gamma", "delta"};
+    String[] expected = {"alpha", "beta", "delta", "gamma"};
+    assertSorts(expected, original, stringSorter);
+  } // switchAdjacentStrings
+
+  @Test
+  public void nullArray() {
+    if (null == intSorter) {
+      return;
+    } // if
+    Integer[] original = {};
+    Integer[] expected = {};
+    assertSorts(expected, original, intSorter);
+  } // nullArray
 } // class TestSorter
