@@ -2,12 +2,15 @@ package edu.grinnell.csc207.sorting;
 
 import java.util.Comparator;
 
+import edu.grinnell.csc207.util.ArrayUtils;
+
 /**
  * Something that sorts using selection sort.
  *
  * @param <T>
  *   The types of values that are sorted.
  *
+ * @author Sarah Deschamps
  * @author Samuel A. Rebelsky
  */
 
@@ -55,6 +58,15 @@ public class SelectionSorter<T> implements Sorter<T> {
    */
   @Override
   public void sort(T[] values) {
-    // STUB
+    int smallest;
+    for (int i = 0; i < values.length; i++) {
+      smallest = i;
+      for (int j = i; j < values.length; j++) {
+        if (order.compare(values[smallest], values[j]) > 0) {
+          smallest = j;
+        } // if
+      } // for
+      ArrayUtils.swap(values, i, smallest);
+    } // for
   } // sort(T[])
 } // class SelectionSorter
