@@ -1,6 +1,9 @@
 package edu.grinnell.csc207.sorting;
 
 import java.util.Comparator;
+import java.util.Random;
+
+import edu.grinnell.csc207.util.ArrayUtils;
 
 /**
  * Something that sorts using Quicksort.
@@ -55,6 +58,62 @@ public class Quicksorter<T> implements Sorter<T> {
    */
   @Override
   public void sort(T[] values) {
-    // STUB
+    Random rand = new Random();
+    sortHelper(values, 0, values.length, rand);
   } // sort(T[])
+
+  /**
+   * Sorts the array from lb to ub.
+   *
+   * @param values
+   *    The array to sort.
+   * @param lb
+   *    The lower bound (inclusive).
+   * @param ub
+   *    The upper bound (exclusive).
+   * @param rand
+   *    The random number generator.
+   */
+  private void sortHelper(T[] values, int lb, int ub, Random rand) {
+    if (lb >= ub) {
+      return;
+    } // if
+    int med = rand.nextInt(lb, ub);
+    T partition = values[med];
+    int[] bounds = dnf(values, partition, lb, ub);
+    sortHelper(values, lb, bounds[0], rand);
+    sortHelper(values, bounds[1], ub, rand);
+  } // sortHelper(T[], int, int, Random)
+
+  /**
+   * Partitions the array into three sections, solving the Dutch National Flag problem.
+   * @param values
+   *    The array of values to sort.
+   * @param partition
+   *    The middle of the array.
+   * @param lb
+   *    The lower bound.
+   * @param ub
+   *    The upper bound.
+   *
+   * @return the values of r and w.
+   */
+  public int[] dnf(T[] values, T partition, int lb, int ub) {
+    int r = lb;
+    int w = lb;
+    int b = ub;
+    while (w < b) {
+      if (order.compare(partition, values[w]) == 0) {
+        w++;
+      } else if (order.compare(values[w], partition) > 0) {
+        ArrayUtils.swap(values, w, b - 1);
+        b--;
+      } else {
+        ArrayUtils.swap(values, w, r);
+        r++;
+        w++;
+      } // if-else
+    } // while
+    return new int[] {r, w};
+  } // dnf(T[], T, int, int)
 } // class Quicksorter
