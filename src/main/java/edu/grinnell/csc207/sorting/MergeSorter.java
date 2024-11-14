@@ -75,7 +75,7 @@ public class MergeSorter<T> implements Sorter<T> {
     int med = (int)(lb / 2.0 + ub / 2.0);
     sortHelper(values, lb, med);
     sortHelper(values, med, ub);
-    merge(values, lb, med, ub); // the merging is creating problems
+    merge(values, lb, med, ub);
   } // sortHelper(T[], int, int)
 
   /**
