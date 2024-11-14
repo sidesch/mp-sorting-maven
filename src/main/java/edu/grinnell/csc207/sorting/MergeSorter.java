@@ -1,6 +1,5 @@
 package edu.grinnell.csc207.sorting;
 
-import java.util.Arrays;
 import java.util.Comparator;
 
 /**
@@ -9,6 +8,7 @@ import java.util.Comparator;
  * @param <T>
  *   The types of values that are sorted.
  *
+ * @author Sarah Deschamps
  * @author Samuel A. Rebelsky
  */
 
@@ -73,8 +73,6 @@ public class MergeSorter<T> implements Sorter<T> {
       return;
     } // if
     int med = (int)(lb / 2.0 + ub / 2.0);
-    T[] sub1 = Arrays.copyOfRange(values, 0, med);
-    T[] sub2 = Arrays.copyOfRange(values, med, values.length);
     sortHelper(values, lb, med);
     sortHelper(values, med, ub);
     merge(values, lb, med, ub); // the merging is creating problems

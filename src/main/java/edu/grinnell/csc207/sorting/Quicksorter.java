@@ -11,6 +11,7 @@ import edu.grinnell.csc207.util.ArrayUtils;
  * @param <T>
  *   The types of values that are sorted.
  *
+ * @author Sarah Deschamps
  * @author Samuel A. Rebelsky
  */
 
