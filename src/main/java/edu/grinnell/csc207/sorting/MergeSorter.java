@@ -72,7 +72,7 @@ public class MergeSorter<T> implements Sorter<T> {
     if (ub - lb <= 1) {
       return;
     } // if
-    int med = (int)(lb / 2.0 + ub / 2.0);
+    int med = (int) (lb / 2.0 + ub / 2.0);
     sortHelper(values, lb, med);
     sortHelper(values, med, ub);
     merge(values, lb, med, ub);
@@ -85,12 +85,10 @@ public class MergeSorter<T> implements Sorter<T> {
    * @param lb
    *    The lower bound of the first subarray.
    * @param med
-   *    The upper bound of the first subarray and 
+   *    The upper bound of the first subarray and
    *    lower bound of the second subarray.
    * @param ub
    *    The upper bound of the second subarray.
-   * @return
-   *    A new sorted merged array.
    */
   private void merge(T[] values, int lb, int med, int ub) {
     int counter = med;

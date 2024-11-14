@@ -15,8 +15,4 @@ This code may be found at <https://github.com/sidesch/mp-sorting-maven>. The ori
 
 Description of custom sorting algorithm
 ---------------------------------------
-
-Notes on using Copilot (or other AI)
-------------------------------------
-
-_This section is optional_
+My algorithm uses a double selection sort method. Through each iteration of the array, it finds the smallest and largest value, and then swaps indeces accordingly. It stops when the largest and largest index are the same, since that means the rest of the array is sorted. 

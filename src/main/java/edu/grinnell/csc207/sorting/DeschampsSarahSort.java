@@ -11,7 +11,7 @@ import java.util.Comparator;
  * at the end. The sorting stops when the smallest and
  * largest values are equal.
  *
- * @param T
+ * @param <T>
  *    The types of values that are sorted.
  *
  * @author Sarah Deschamps
@@ -71,7 +71,7 @@ public class DeschampsSarahSort<T> implements Sorter<T> {
         if (order.compare(values[smallest], values[j]) > 0) {
           smallest = j;
         } // if
-        if (order.compare(values[largest], values[j]) <= 0) {
+        if (order.compare(values[largest], values[j]) < 0) {
           largest = j;
         } // if
       } // for

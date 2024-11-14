@@ -59,7 +59,7 @@ public class InsertionSorter<T> implements Sorter<T> {
   @Override
   public void sort(T[] values) {
     for (int i = 1; i < values.length; i++) {
-      if (order.compare(values[i-1], values[i]) >= 0) {
+      if (order.compare(values[i - 1], values[i]) >= 0) {
         for (int j = i; j > 0; j--) {
           if (order.compare(values[j], values[j - 1]) < 0) {
             ArrayUtils.swap(values, j, j - 1);
