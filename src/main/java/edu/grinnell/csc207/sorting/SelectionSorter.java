@@ -60,13 +60,28 @@ public class SelectionSorter<T> implements Sorter<T> {
   public void sort(T[] values) {
     int smallest;
     for (int i = 0; i < values.length; i++) {
-      smallest = i;
-      for (int j = i; j < values.length; j++) {
-        if (order.compare(values[smallest], values[j]) > 0) {
-          smallest = j;
-        } // if
-      } // for
+      smallest = findSmallest(values, i);
       ArrayUtils.swap(values, i, smallest);
     } // for
   } // sort(T[])
+
+  /**
+   * Find the smallest value in an array of values
+   * given a starting index.
+   *
+   * @param values
+   *    The array of values.
+   * @param i
+   *    The starting index.
+   * @return The index of the smallest value.
+   */
+  private int findSmallest(T[] values, int i) {
+    int smallest = i;
+    for (int j = i + 1; j < values.length; j++) {
+     if (order.compare(values[smallest], values[j]) > 0) {
+       smallest = j;
+      } // if
+    } // for
+    return smallest;
+  } // findSmallest(T[], int)
 } // class SelectionSorter
